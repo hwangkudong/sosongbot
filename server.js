@@ -1,3 +1,4 @@
+/*eslint-env node, express*/
 /** 
 * Created by http://myeonguni.com on 2016-09-02. 
 */ 

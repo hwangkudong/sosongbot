@@ -25,13 +25,13 @@ module.exports = function(app, fs)
         }
 		
 		// 초기 keyboard 버튼일 경우(도움말||시작하기||만든이)
-		if(req.body["content"] == "도움말" || req.body["content"] == "시작하기" || req.body["content"] == "만든이"){
+		if(req.body["content"] === "도움말" || req.body["content"] === "시작하기" || req.body["content"] === "만든이"){
 			fs.readFile( __dirname + "/../data/message.json", 'utf8',  function(err, data){
 				var messages = JSON.parse(data);
 				// 각 keyboard 버튼에 따른 응답 메시지 설정
-				if(req.body["content"] == "도움말"){
+				if(req.body["content"] === "도움말"){
 					messages["message"] = {"text" : "얻고 싶은 이미지파일의 키워드를 검색하시면 자동으로 해당 이미지파일이 반환됩니다."};
-				}else if(req.body["content"] == "시작하기"){
+				}else if(req.body["content"] === "시작하기"){
 					messages["message"] = {"text" : "오늘 하루도 행복한 하루되세요. *^^*"};
 				}else{
 					messages["message"] = {"text" : "명우니닷컴(http://myeonguni.com)에서 개발하였습니다."};
