@@ -9,6 +9,6 @@
     "Name": "sosongbot",
     "Instrumentation": {}
   },
-  "Path": "",
+  "Path": "manifest.yml",
   "Type": "Cloud Foundry"
 }

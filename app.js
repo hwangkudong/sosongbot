@@ -1,4 +1,4 @@
-/*eslint-env node*/
+/*eslint-env node, express*/
 
 //------------------------------------------------------------------------------
 // node.js starter application for Bluemix
@@ -16,7 +16,7 @@ var cfenv = require('cfenv');
 var app = express();
 
 // serve the files out of ./public as our main files
-app.use(express.static(__dirname + '/public'));
+//app.use(express.static(__dirname + '/public'));
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
@@ -25,4 +25,19 @@ var appEnv = cfenv.getAppEnv();
 app.listen(appEnv.port, '0.0.0.0', function() {
   // print a message when the server starts listening
   console.log("server starting on " + appEnv.url);
+});
+
+// 키보드
+app.get('/keyboard', (req, res) => {
+	
+ console.log('APIs initialize');
+	
+  const menu = {
+      type: 'buttons',
+      buttons: ["메뉴1", "메뉴2", "메뉴3"]
+  };
+
+  res.set({
+      'content-type': 'application/json'
+  }).send(JSON.stringify(menu));
 });
