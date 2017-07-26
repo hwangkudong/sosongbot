@@ -7,7 +7,8 @@ var express = require('express');
 var app = express(); 
 var bodyParser = require('body-parser'); 
 var session = require('express-session'); 
-var fs = require("fs") 
+var fs = require("fs");
+var mongoose = require('mongoose');
 
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
@@ -29,6 +30,14 @@ secret: 'zhJ5Ia4X598Y6PEd2hBVeZQC8TA',
 resave: false, 
 saveUninitialized: true 
 })); 
-   
-  
-var router = require('./router/main')(app, fs); 
+
+//db설정
+mongoose.connect('mongodb://sosong:sosong@aws-us-east-1-portal.26.dblayer.com:20793/admin?ssl=true');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console,'connection error:'));
+db.once('open', function() {
+	console.log("mongo db connection OK.");	
+});
+
+var router = require('./router/main')(app, db, fs); 

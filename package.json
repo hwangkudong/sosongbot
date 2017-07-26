@@ -3,11 +3,12 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"start": "node app.js"
+		"start": "node server.js"
 	},
 	"dependencies": {
 		"express": "4.13.x",
-		"cfenv": "1.0.x"
+		"cfenv": "1.0.x",
+	    "mongoose": "^4.11.1"
 	},
 	"repository": {},
 	"engines": {
