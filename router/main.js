@@ -19,6 +19,8 @@ module.exports = function(app, db, fs)
 	
 	//[윤준호] 메뉴선택 처리
 	app.post('/message', function(req, res){
+		var result = {  };
+		
 		// CHECK REQ VALIDITY
         if(!req.body["user_key"] || !req.body["type"] || !req.body["content"]){
             result["success"] = 0;
